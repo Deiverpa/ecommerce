@@ -8,8 +8,10 @@ import Form from "./Components/Form/Form";
 // import ConsumiendoApis from "./Components/ConsumiendoApis/ConsumiendoApis";
 import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer";
-import Login from "./Components/Login/Login";
 import CartContextProvider from "./context/CartContext";
+import SignIn from "./Components/auth/Login/SignIn";
+import SignUp from "./Components/auth/Login/SignUp";
+import AuthDetails from "./Components/auth/Login/AuthDetails";
 
 function App() {
   return (
@@ -30,7 +32,9 @@ function App() {
             path="/itemDetail/:id"
             element={<ItemDetailContainer />}
           ></Route>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<SignIn />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/AuthDetails" element={<AuthDetails />} />
           <Route path="/formulario" element={<Form />} />
           <Route path="*" element={<h1>404</h1>}></Route>
         </Routes>

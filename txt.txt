@@ -1,0 +1,67 @@
+import { useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import NavBar from "./Components/NavBar/NavBar";
+import Cart from "./Components/Cart/Cart";
+import Form from "./Components/Form/Form";
+import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
+import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer";
+import CartContextProvider from "./context/CartContext";
+
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    // Lógica de inicio de sesión
+    setIsLoggedIn(true);
+  };
+
+  return (
+    <BrowserRouter>
+      <CartContextProvider>
+        <Routes>
+          {!isLoggedIn && (
+            <Route path="/" element={<Login onLogin={handleLogin} />} />
+          )}
+          {isLoggedIn && (
+            <>
+              <NavBar />
+              <Route
+                path="/"
+                element={<ItemListContainer greeting={"!"} />}
+              ></Route>
+              <Route
+                path="/category/:categoryName"
+                element={<ItemListContainer />}
+              />
+              <Route path="/cart" element={<Cart />} />
+              <Route
+                path="/itemDetail/:id"
+                element={<ItemDetailContainer />}
+              ></Route>
+              {/* ... Otras rutas */}
+            </>
+          )}
+          <Route path="/formulario" element={<Form />} />
+          {/* ... Otras rutas */}
+          <Route path="*" element={<h1>404</h1>}></Route>
+        </Routes>
+      </CartContextProvider>
+    </BrowserRouter>
+  );
+}
+
+const Login = ({ onLogin }) => {
+  const handleLoginClick = () => {
+    onLogin();
+  };
+
+  return (
+    <div>
+      <h2>Por favor, inicia sesión</h2>
+      {/* Aquí iría tu formulario de inicio de sesión */}
+      <button onClick={handleLoginClick}>Iniciar sesión</button>
+    </div>
+  );
+};
+
+export default App;
