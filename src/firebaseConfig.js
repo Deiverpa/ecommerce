@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import firebaseData from "./FirebaseInfo";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.googl e.com/docs/web/setup#available-libraries
@@ -9,12 +10,12 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAXcsoQ48thAhbdOLrdwbXy2QnSsxgPX08",
-  authDomain: "ecommercev2-6bed3.firebaseapp.com",
-  projectId: "ecommercev2-6bed3",
-  storageBucket: "ecommercev2-6bed3.appspot.com",
-  messagingSenderId: "424137684480",
-  appId: "1:424137684480:web:6a78b8c572e3fc97aacae5",
+  apiKey: firebaseData.apiKey,
+  authDomain: firebaseData.authDomain,
+  projectId: firebaseData.projectId,
+  storageBucket: firebaseData.storageBucket,
+  messagingSenderId: firebaseData.messagingSenderId,
+  appId: firebaseData.appId,
 };
 
 // Initialize Firebase
